@@ -1,0 +1,43 @@
+{
+  "name": "renderless-selector",
+  "version": "1.0.0",
+  "description": "provides selector functionality",
+  "main": "dist/renderlessselector.umd.js",
+  "module": "dist/renderlessselector.esm.js",
+  "unpkg": "dist/renderlessselector.min.js",
+  "browser": {
+    "./sfc": "src/RenderlessSelector.vue"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gissilali/renderless-selector.git"
+  },
+  "keywords": [
+    "selector",
+    "renderless"
+  ],
+  "author": "silali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gissilali/renderless-selector/issues"
+  },
+  "homepage": "https://github.com/gissilali/renderless-selector#readme",
+  "dependencies": {
+    "fuse.js": "^6.4.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "minimist": "^1.2.5",
+    "rollup": "^2.28.2",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-uglify-es": "0.0.1",
+    "rollup-plugin-vue": "^5.1.9",
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
+  }
+}
