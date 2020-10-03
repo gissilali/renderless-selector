@@ -21,6 +21,6 @@ if (GlobalVue) {
     GlobalVue.use(plugin)
 }
 
-component.install = install
+RenderlessSelector.install = install
 
-export default component
+export default RenderlessSelector
