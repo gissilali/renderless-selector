@@ -8,31 +8,30 @@ import minimist from "minimist";
 const argv = minimist(process.argv.slice(2));
 
 const config = {
-  input: "src/entry.js",
-  output: {
-    name: "RenderlessSelector",
-    exports: "named"
-  },
-  plugins: [
-    external,
-    replace({
-      "process.env.NODE_ENV": JSON.stringify("production")
-    }),
-    commonjs(),
-    vue({
-      css: true,
-      compileTemplate: true,
-      template: {
-        isProduction: true
-      }
-    }),
-    buble()
-  ]
+    input: "src/entry.js",
+    output: {
+        name: "RenderlessSelector",
+        exports: "named"
+    },
+    plugins: [
+        replace({
+            "process.env.NODE_ENV": JSON.stringify("production")
+        }),
+        commonjs(),
+        vue({
+            css: true,
+            compileTemplate: true,
+            template: {
+                isProduction: true
+            }
+        }),
+        buble()
+    ]
 };
 
 // Only minify browser (iife) version
 if (argv.format === "iife") {
-  config.plugins.push(uglify());
+    config.plugins.push(uglify());
 }
 
 export default config;

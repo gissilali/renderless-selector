@@ -1,6 +1,6 @@
 {
   "name": "renderless-selector",
-  "version": "1.0.2",
+  "version": "1.3.0",
   "description": "provides selector functionality",
   "main": "dist/renderlessselector.umd.js",
   "module": "dist/renderlessselector.esm.js",
@@ -9,7 +9,10 @@
     "./sfc": "src/RenderlessSelector.vue"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
+    "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format umd --file dist/renderlessselector.umd.js",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es --file dist/renderlessselector.esm.js",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife --file dist/renderlessselector.min.js"
   },
   "repository": {
     "type": "git",
