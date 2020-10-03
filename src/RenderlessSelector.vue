@@ -84,7 +84,7 @@ export default {
               break;
             }
           }
-          console.log(_.includes(this.selectedItems, item));
+
           if (!hasSelectedItem) {
             this.selectedItems.push(item);
           }
@@ -99,10 +99,9 @@ export default {
     }, selectItem() {
       this.addItemToSelection(this.searchResults[this.highlightedIndex].item)
     }, deleteItemFromSelection(item) {
-      this.selectedItems = _.filter(this.selectedItems, u => {
-        return u.id !== item.id;
-      });
-
+      this.selectedItems.filter(selectedItem => {
+        return selectedItem.id !== item.id;
+      })
       this.$emit('item-removed', item)
     },
     highlightNext() {
