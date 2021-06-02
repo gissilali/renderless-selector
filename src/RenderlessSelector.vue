@@ -180,7 +180,7 @@
               this.selectedItems = [selectedItems];
             }
           } else {
-            this.selectableItems = [];
+            this.selectedItems = [];
           }
         },
         immediate: true
