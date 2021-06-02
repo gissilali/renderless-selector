@@ -179,6 +179,8 @@
               }
               this.selectedItems = [selectedItems];
             }
+          } else {
+            this.selectableItems = [];
           }
         },
         immediate: true
