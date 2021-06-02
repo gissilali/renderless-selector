@@ -9,9 +9,15 @@ const argv = minimist(process.argv.slice(2));
 
 const config = {
     input: "src/entry.js",
+    external: [
+        "fuse.js"
+    ],
     output: {
         name: "RenderlessSelector",
-        exports: "named"
+        exports: "named",
+        "globals": {
+            "fuse.js": "Fuse"
+        }
     },
     plugins: [
         replace({
@@ -26,7 +32,8 @@ const config = {
             }
         }),
         buble()
-    ]
+    ],
+
 };
 
 // Only minify browser (iife) version
