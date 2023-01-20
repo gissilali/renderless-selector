@@ -46,6 +46,7 @@ export default {
         this.searchInput.value = ''
       });
 
+
       this.searchInput.addEventListener('focus', () => {
         this.searchResults = this.options.map((item, index) => {
           return {item, refIndex: index}
