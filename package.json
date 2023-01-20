@@ -9,6 +9,7 @@
     "./sfc": "src/RenderlessSelector.vue"
   },
   "scripts": {
+    "dev": "",
     "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
     "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format umd --file dist/renderlessselector.umd.js",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es --file dist/renderlessselector.esm.js",
