@@ -79,12 +79,18 @@ export default {
     },
     search(event) {
       if (this.fuseSearch) {
-        const results = this.fuseSearch.search(event.target.value)
-        if (results.length > 0) {
-          this.searchResults = this.fuseSearch.search(event.target.value);
+        if(event.target.value.length > 0) {
+          const results = this.fuseSearch.search(event.target.value)
+          if (results.length > 0) {
+            this.searchResults = this.fuseSearch.search(event.target.value);
+          }
+
+          return;
         }
 
-        return;
+        this.searchResults = this.options.map((item, index) => {
+          return {item, refIndex: index}
+        })
       }
 
       return [];
