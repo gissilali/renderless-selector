@@ -79,8 +79,11 @@ export default {
     },
     search(event) {
       if (this.fuseSearch) {
-        console.log(this.fuseSearch.search(event.target.value));
-        this.searchResults = this.fuseSearch.search(event.target.value);
+        const results = this.fuseSearch.search(event.target.value)
+        if (results.length > 0) {
+          this.searchResults = this.fuseSearch.search(event.target.value);
+        }
+
         return;
       }
 
@@ -172,7 +175,7 @@ export default {
       handler: function (items) {
         let options = {
           shouldSort: true,
-          minMatchCharLength: 3,
+          minMatchCharLength: 1,
           keys: [...this.searchKeys]
         };
         this.fuseSearch = new Fuse(items, options);
