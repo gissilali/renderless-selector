@@ -1,6 +1,7 @@
 <script>
 import Fuse from "fuse.js";
 import {handleClickOutside} from "./utils/clickOutsideHandler";
+
 export default {
   name: "RenderlessSelector",
   props: {
@@ -40,9 +41,15 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.searchInput = this.$el.querySelector(`#${this.searchInputId}`);
-      handleClickOutside(this.searchInput,  () => {
+      handleClickOutside(this.searchInput, () => {
         this.searchResults = []
         this.searchInput.value = ''
+      });
+
+      this.searchInput.addEventListener('focus', () => {
+        this.searchResults = this.options.map((item, index) => {
+          return {item, refIndex: index}
+        })
       })
     });
   },
