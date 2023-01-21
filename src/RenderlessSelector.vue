@@ -24,6 +24,10 @@ export default {
     },
     allowDuplicates: {
       default: false
+    },
+    isSearchable: {
+      type: Boolean,
+      default: true
     }
   },
   created() {
@@ -40,7 +44,13 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.searchInput = this.$el.querySelector(`#${this.searchInputId}`);
+      if (this.isSearchable) {
+        this.searchInput = this.$el.querySelector(`#${this.searchInputId}`);
+      } else {
+        const searchInput = this.$el.querySelector(`#${this.searchInputId}`);
+        searchInput.setAttribute('readonly', 'true')
+        this.searchInput = searchInput
+      }
       handleClickOutside(this.searchInput, () => {
         this.searchResults = []
         this.searchInput.value = ''
