@@ -62,7 +62,8 @@ export default {
       selectedItems: [],
       hasPermission: true,
       searchInput: null,
-      highlightedIndex: 0
+      highlightedIndex: 0,
+      searchQuery: ''
     };
   },
   methods: {
@@ -78,6 +79,7 @@ export default {
       });
     },
     search(event) {
+      this.searchQuery = event.target.value
       if (this.fuseSearch) {
         if(event.target.value.length > 0) {
           const results = this.fuseSearch.search(event.target.value)
@@ -226,6 +228,7 @@ export default {
       highlightPrev: this.highlightPrev,
       selectItem: this.selectItem,
       highlightedIndex: this.highlightedIndex,
+      searchQuery: this.searchQuery
     });
   }
 };
