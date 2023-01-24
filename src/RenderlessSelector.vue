@@ -46,10 +46,25 @@ export default {
     this.$nextTick(() => {
       if (this.isSearchable) {
         this.searchInput = this.$el.querySelector(`#${this.searchInputId}`);
+        this.searchInput.addEventListener('focus', () => {
+          this.searchResults = this.options.map((item, index) => {
+            return {item, refIndex: index}
+          })
+        })
       } else {
         const searchInput = this.$el.querySelector(`#${this.searchInputId}`);
         searchInput.setAttribute('readonly', 'true')
         this.searchInput = searchInput
+        this.searchInput.addEventListener('click', () => {
+          const searchResults = this.options.map((item, index) => {
+            return {item, refIndex: index}
+          })
+          if(this.searchResults.length === 0) {
+            this.searchResults = searchResults
+          } else {
+            this.searchResults = []
+          }
+        })
       }
       handleClickOutside(this.searchInput, () => {
         this.searchResults = []
@@ -57,11 +72,7 @@ export default {
       });
 
 
-      this.searchInput.addEventListener('focus', () => {
-        this.searchResults = this.options.map((item, index) => {
-          return {item, refIndex: index}
-        })
-      })
+
     });
   },
   data() {

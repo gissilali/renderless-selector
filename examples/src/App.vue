@@ -9,9 +9,12 @@
           :multiple="false">
         <template v-slot="{  searchResults,  searchInputId, addItemToSelection, search, highlightedIndex, highlightNext, highlightPrev, selectItem, searchQuery }">
           <div class="relative bg-gray-100 w-full">
-            <input :id="searchInputId" @keyup.prevent="search" @keydown.down.prevent="highlightNext"
-                   @keydown.up.prevent="highlightPrev" @keydown.enter.prevent="selectItem"
-                   placeholder="type in employee name and select" autocomplete="npe" type="text" class="w-full border border-gray-300 py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0" />
+            <button :id="searchInputId" type="button">
+              {{ selectedClient ? selectedClient.name : 'Select a Click'}}
+            </button>
+<!--            <input  :id="searchInputId" @keyup.prevent="search" @keydown.down.prevent="highlightNext"-->
+<!--                   @keydown.up.prevent="highlightPrev" @keydown.enter.prevent="selectItem"-->
+<!--                   placeholder="type in employee name and select" autocomplete="npe" type="text" class="w-full border border-gray-300 py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0" />-->
             <div v-show="searchResults.length > 0"
                  class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               <div class="relative hover:bg-gray-200 cursor-default select-none py-2 pl-10 pr-4">
