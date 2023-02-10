@@ -59,7 +59,7 @@ export default {
           const searchResults = this.options.map((item, index) => {
             return {item, refIndex: index}
           })
-          if(this.searchResults.length === 0) {
+          if (this.searchResults.length === 0) {
             this.searchResults = searchResults
           } else {
             this.searchResults = []
@@ -70,7 +70,6 @@ export default {
         this.searchResults = []
         this.searchInput.value = ''
       });
-
 
 
     });
@@ -102,7 +101,7 @@ export default {
     search(event) {
       this.searchQuery = event.target.value
       if (this.fuseSearch) {
-        if(event.target.value.length > 0) {
+        if (event.target.value.length > 0) {
           const results = this.fuseSearch.search(event.target.value)
           if (results.length > 0) {
             this.searchResults = this.fuseSearch.search(event.target.value);
@@ -118,7 +117,10 @@ export default {
 
       return [];
     },
-    addItemToSelection(item) {
+    addItemToSelection(item, clearSearch = true) {
+      if (clearSearch) {
+        this.searchQuery = ""
+      }
       if (this.multiple) {
         if (this.allowDuplicates) {
           this.selectedItems.push(item);
