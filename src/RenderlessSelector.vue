@@ -1,6 +1,6 @@
 <script>
 import Fuse from 'fuse.js'
-import { handleClickOutside } from './utils/clickOutsideHandler'
+import {handleClickOutside} from './utils/clickOutsideHandler'
 
 export default {
   name: 'RenderlessSelector',
@@ -51,7 +51,7 @@ export default {
         this.searchInput = this.$el.querySelector(`#${this.searchInputId}`)
         this.searchInput.addEventListener('focus', () => {
           this.searchResults = this.options.map((item, index) => {
-            return { item, refIndex: index }
+            return {item, refIndex: index}
           })
         })
       } else {
@@ -60,7 +60,7 @@ export default {
         this.searchInput = searchInput
         this.searchInput.addEventListener('click', () => {
           const searchResults = this.options.map((item, index) => {
-            return { item, refIndex: index }
+            return {item, refIndex: index}
           })
           if (this.searchResults.length === 0) {
             this.searchResults = searchResults
@@ -112,7 +112,7 @@ export default {
         }
 
         this.searchResults = this.options.map((item, index) => {
-          return { item, refIndex: index }
+          return {item, refIndex: index}
         })
       }
 
@@ -161,9 +161,18 @@ export default {
       this.addItemToSelection(this.searchResults[this.highlightedIndex].item)
     },
     deleteItemFromSelection(item) {
-      this.selectedItems.filter((selectedItem) => {
-        return selectedItem.id !== item.id
+      console.log({
+        item,
       })
+      let key = 'id'
+      if (this.duplicateKey) {
+        key = this.duplicateKey
+      }
+
+      this.selectedItems = [...this.selectedItems].filter((selectedItem) => {
+        return selectedItem[key] !== item[key]
+      })
+
       this.$emit('item-removed', item)
     },
     highlightNext() {
