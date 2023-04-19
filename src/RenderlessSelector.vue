@@ -1,6 +1,6 @@
 <script>
 import Fuse from 'fuse.js'
-import {handleClickOutside} from './utils/clickOutsideHandler'
+import { handleClickOutside } from './utils/clickOutsideHandler'
 
 export default {
   name: 'RenderlessSelector',
@@ -51,8 +51,9 @@ export default {
         this.searchInput = this.$el.querySelector(`#${this.searchInputId}`)
         this.searchInput.addEventListener('focus', () => {
           this.searchResults = this.options.map((item, index) => {
-            return {item, refIndex: index}
+            return { item, refIndex: index }
           })
+          this.showDropdown = true
         })
       } else {
         const searchInput = this.$el.querySelector(`#${this.searchInputId}`)
@@ -60,7 +61,7 @@ export default {
         this.searchInput = searchInput
         this.searchInput.addEventListener('click', () => {
           const searchResults = this.options.map((item, index) => {
-            return {item, refIndex: index}
+            return { item, refIndex: index }
           })
           if (this.searchResults.length === 0) {
             this.searchResults = searchResults
@@ -72,6 +73,7 @@ export default {
       handleClickOutside(this.searchInput, () => {
         this.searchResults = []
         this.searchInput.value = ''
+        this.showDropdown = false
       })
     })
   },
@@ -85,6 +87,7 @@ export default {
       searchInput: null,
       highlightedIndex: 0,
       searchQuery: '',
+      showDropdown: false,
     }
   },
   methods: {
@@ -112,7 +115,7 @@ export default {
         }
 
         this.searchResults = this.options.map((item, index) => {
-          return {item, refIndex: index}
+          return { item, refIndex: index }
         })
       }
 
@@ -268,6 +271,7 @@ export default {
       selectItem: this.selectItem,
       highlightedIndex: this.highlightedIndex,
       searchQuery: this.searchQuery,
+      showDropdown: this.showDropdown,
     })
   },
 }
