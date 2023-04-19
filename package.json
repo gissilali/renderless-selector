@@ -1,6 +1,6 @@
 {
   "name": "renderless-selector",
-  "version": "15.0.3",
+  "version": "15.0.4",
   "description": "provides selector functionality",
   "main": "dist/renderlessselector.umd.js",
   "module": "dist/renderlessselector.esm.js",
