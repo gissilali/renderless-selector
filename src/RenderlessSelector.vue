@@ -200,14 +200,15 @@ export default {
       this.$emit('items-modified')
     },
     containsObject(obj, list) {
-      let i
-      for (i = 0; i < list.length; i++) {
-        if (list[i] === obj) {
-          return true
-        }
+      const foundObject = list.find(item => item === obj);
+      // Check if the object was found
+      if (foundObject !== undefined) {
+        return true;
       }
-      return false
-    },
+      // Object was not found
+      return false;
+    }
+
   },
   watch: {
     selectedItems: {
